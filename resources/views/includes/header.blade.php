@@ -22,7 +22,19 @@
               <li><a href="{{route('blog')}}" class="nav-link">Blog</a></li>
               <li><a href="{{route('about')}}" class="nav-link">About</a></li>
               <li><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
+              <li> @if (Route::has('login'))
+                @auth
+                    <a href="{{route('index')}}" class="btn btn-primary btn-block py-3">
+                        Admin
+                    </a>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-primary btn-block py-3">
+                        Login<i class="fa fa-arrow-right ms-3"></i>
+                    </a>
+                @endauth
+            @endif</li>
             </ul>
+
           </nav>
         </div>
 

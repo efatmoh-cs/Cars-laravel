@@ -67,11 +67,15 @@
                             <td>{{ $car->cartitle}}</td>
                             <td>{{ $car->price}}</td>
 
-                             <td>{{$car->active? 'Yes': 'No'}}</td>
+                             <td> @if($car->active)
+                                Yes
+                            @else
+                                No
+                            @endif</td>
 
 
                             <td><img src="{{ asset('assets/images/edit.png')}}" alt="Edit"><a href="editcar/{{ $car->id }}">Edit</a></td>
-                            <td><img src="{{ asset('assets/images/delete.png')}}" alt="Delete"><a href="destroycar/{{ $car->id }}">Delete</a></td>
+                            <td><img src="{{ asset('assets/images/delete.png')}}" alt="Delete"><a href="{{route('destroycar', $car->id)}}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
                           </tr>
 
 

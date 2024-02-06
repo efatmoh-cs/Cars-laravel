@@ -16,9 +16,14 @@ class Car extends Model
         'passengers',
         'price',
         'image',
-        'active'
+        'active',
+        'category_id'
+
+
       ];
 
-  
+      public function category(){
+         return $this->belongsTo( Category::class);//category(model)
+         }
 
 }

@@ -116,7 +116,7 @@
 
 
             <div class="pt-5">
-              <p>Category:  <a href="#">Design</a></p>
+              <p>Category:  <a href="#">{{$car->category->categoryName}}</a></p>
             </div>
 
 
@@ -268,7 +268,7 @@
       </div>
     </div>
 
-====
+
 @include('includes.footer')
 
     </div>

@@ -109,10 +109,11 @@
                                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Category <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
-                                                <select class="form-control" name="category" id="">
-                                                    <option value=" ">Select Category</option>
-                                                    <option value="cat1">Category 1</option>
-                                                    <option value="cat2">Category 2</option>
+                                                <select class="form-control" name="category_id" id="">
+                                                     @foreach ($categories as $category)
+               <option value="{{ $category->id }}"@selected( $category->id == $car->category_id)> {{$category->categoryName}}
+                                            </option>
+                                         @endforeach
                                                 </select>
                                             </div>
                                         </div>

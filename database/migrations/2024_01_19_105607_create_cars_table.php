@@ -18,10 +18,12 @@ return new class extends Migration
             $table->float('luggage');
             $table->integer('doors');
             $table->integer('passengers');
-            $table->float('price');
             $table->boolean('active');
+            $table->float('price');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('Restrict');
             $table->softDeletes();
             $table->string('image',100);
+
             $table->timestamps();
         });
     }

@@ -47,13 +47,18 @@
                                 </div>
                                 <div class="x_content">
                                     <br />
-                                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="storecar" method="post" enctype="multipart/form-data">
+                                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="storecar" method="post" enctype="multipart/form-data" >
                                         @csrf
                                         <div class="item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Title <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
-                                                <input type="text" id="title" required="required"   name="cartitle" class="form-control ">
+                                                <input type="text" id="title" required="required"   name="cartitle"    class="form-control " >
+                                                @error('cartitle')
+                                                <div class="alert alert-danger">
+                                                    <strong>Error!!</strong> {{$messages}}
+                                                </div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -66,9 +71,15 @@
                                         <div class="item form-group">
                                             <label for="luggage" class="col-form-label col-md-3 col-sm-3 label-align">Luggage <span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6 ">
-                                                <input id="luggage" class="form-control" type="number" name="luggage" required="required">
+                                                <input id="luggage" class="form-control" type="number" name="luggage"  required="required">
+                                                @error('luggage')
+                                                <div class="alert alert-warning">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
                                             </div>
                                         </div>
+
                                         <div class="item form-group">
                                             <label for="doors" class="col-form-label col-md-3 col-sm-3 label-align">Doors <span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6 ">
@@ -107,10 +118,12 @@
                                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Category <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
-                                                <select class="form-control" name="category" id="">
+                                                <select class="form-control" name=" category_id" id="">
                                                     <option value=" ">Select Category</option>
-                                                    <option value="cat1">Category 1</option>
-                                                    <option value="cat2">Category 2</option>
+
+                                                    @foreach ($categories as $category )
+                                                    <option value="{{$category->id }}"> {{$category->categoryName}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>

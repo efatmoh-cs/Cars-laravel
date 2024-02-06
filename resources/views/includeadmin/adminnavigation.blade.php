@@ -5,10 +5,46 @@
         </div>
         <nav class="nav navbar-nav">
             <ul class=" navbar-right">
-                <li class="nav-item dropdown open" style="padding-left: 15px;">
+
+                <li class="nav-item dropdown open"  style="padding-left: 15px;">
+                    <a href="{{route('index')}}">Home</a>
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                        <img src="{{  asset('assets/images/img.jpg')}}" alt="">John Doe
+
                     </a>
+
+                    <div >
+                        @guest
+                            @if (Route::has('login'))
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            @endif
+
+                            @if (Route::has('register'))
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            @endif
+                        @else
+
+                                <div class="nav-item dropdown rounded-pill px-3 d-none d-lg-block" style="background-color: #6c757d;">
+                                    <a id="navbarDropdown" class="nav-link " href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre style="color: #FFFFFF">
+                                        {{ Auth::user()->name }}
+                                    </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </div>
+                            @endguest
+
+                    </div>
+
+
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="javascript:;"> Profile</a>
                         <a class="dropdown-item" href="javascript:;">
@@ -23,7 +59,7 @@
                 <li role="presentation" class="nav-item dropdown open">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-green">6</span>
+                        <span  class="badge bg-green"></span>
                     </a>
                     <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                         <li class="nav-item">

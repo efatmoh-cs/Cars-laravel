@@ -47,19 +47,26 @@
                                 </div>
                                 <div class="x_content">
                                     <br />
-                                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="storetestimonial" method="post" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
-                                                <input type="text" id="name" required="required" class="form-control ">
+                                                <input type="text" id="name" required="required" name="name" class="form-control ">
+
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Position <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
-                                                <input type="text" id="position" required="required" class="form-control ">
+                                                <input type="text" id="position" required="required" name="position" class="form-control ">
+                                                @error('position')
+                                                <div class="alert alert-danger">
+                                                    <strong>Error!!</strong> {{$message}}
+                                                </div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -74,7 +81,7 @@
                                             <label class="col-form-label col-md-3 col-sm-3 label-align">Published</label>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" class="flat">
+                                                    <input type="checkbox" name="published" class="flat">
                                                 </label>
                                             </div>
                                         </div>

@@ -25,7 +25,7 @@
 
               <div class="separator">
                 <p class="change_link">New to site?
-                  <a href="#signup" class="to_register"> Create Account </a>
+                  <a href="{{route('Admin.signup')}}" class="to_register"> Create Account </a>
                 </p>
 
                 <div class="clearfix"></div>
@@ -40,7 +40,7 @@
           </section>
         </div>
 
-        <div id="register" class="animate form registration_form">
+        {{-- <div id="register" class="animate form registration_form">
           <section class="login_content">
             <form>
               <h1>Create Account</h1>
@@ -77,7 +77,7 @@
               </div>
             </form>
           </section>
-        </div>
+        </div> --}}
       </div>
     </div>
   </body>

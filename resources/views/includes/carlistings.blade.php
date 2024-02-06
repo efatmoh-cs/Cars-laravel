@@ -46,5 +46,14 @@
         </div>
         @endforeach
       </div>
+
+
+      {{ $cars->links() }}
+
+
+   </div>
+   
     </div>
+    </div>
+
  </div>
