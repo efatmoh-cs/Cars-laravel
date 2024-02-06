@@ -31,16 +31,14 @@ class AdminuserController extends Controller
      */
     public function store(Request $request)
     {
-        $messages=[
-     'password.required'=>'العنوان مطلوب',//the same name in form field
-            ];
+
         $data = $request->validate([
             'fullname'=> 'required|string|max:255',
             'username' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' =>'required|string|min:8'
 
-        ], $messages);
+        ]);
 
         $data['active'] = isset($request->active);
 

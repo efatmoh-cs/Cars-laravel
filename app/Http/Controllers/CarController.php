@@ -40,12 +40,12 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        // $message= $this->message();
+       
         $data = $request->validate([
             'cartitle'=> 'required|string|max:255',
             'content'=> 'required|string|max:255',
             'luggage'=> 'integer|max:11',
-            'doors'=> '',
+            'doors'=> 'integer|max:8',
             'passengers'=> 'integer|max:20',
             'price'=> 'required|numeric|min:0|not_in:0',
             'category_id'=>'required|string',
